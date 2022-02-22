@@ -89,7 +89,16 @@ public class RoomComplexActivity extends AppCompatActivity {
         user.setAddress(address);
         user.setInks(getInks());
         user.setBooks(getBooks());
+        user.setTags(getStrinList());
         return user;
+    }
+
+    private ArrayList<String> getStrinList() {
+        ArrayList<String> list = new ArrayList<>();
+        for(int i = 0; i < 5;i++){
+            list.add("string " + i);
+        }
+        return list;
     }
 
     private ArrayList<Book> getBooks() {

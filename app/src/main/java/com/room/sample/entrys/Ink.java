@@ -6,7 +6,7 @@ import androidx.room.Entity;
 /**
  * 墨水
  */
-@Entity
+@Entity()
 public class Ink {
     @ColumnInfo(name = "ink_name")
     public String name;

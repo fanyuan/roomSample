@@ -22,4 +22,6 @@ class ComplexUser {
     var inks:ArrayList<Ink> = arrayListOf()
     //@TypeConverters(BookListConvert::class)
     var books:ArrayList<Book> = arrayListOf()
+    @TypeConverters(StringListConvert::class)
+    var tags:ArrayList<String> = arrayListOf()
 }
