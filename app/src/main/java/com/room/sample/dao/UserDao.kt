@@ -33,6 +33,11 @@ interface UserDao {
     @Query("select * from user")
     fun queryAll():List<User>
     /**
+     * 查询所有user对象
+     */
+    @Query("select * from user WHERE autoId < :startId+1  ORDER BY autoId DESC LIMIT  :size   OFFSET 0")
+    fun queryRange(startId:Int,size:Int):List<User>
+    /**
      * 查询最顶上的对象
      */
     @Query("select * from user  ORDER BY autoId DESC LIMIT 1")

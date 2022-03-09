@@ -40,6 +40,21 @@ class RoomBaseActivity : AppCompatActivity() {
             }
         }
     }
+    fun queryRange(view: View) {
+        lifecycleScope.launch(Dispatchers.IO){
+            val list = UserDataBaseHelper.getDb(application).userDao().queryRange(7,5)
+            Log.d("log_debug","RoomBaseActivity queryRange --- ${Thread.currentThread().name}")
+
+            withContext(Dispatchers.Main){
+                val str = Gson().toJson(list)
+                Log.d("log_debug", "RoomBaseActivity queryRange --- ${Thread.currentThread().name}")
+
+                list.forEach{user ->
+                    binding.tvDisplay.append("${Gson().toJson(user)} \n")
+                }
+            }
+        }
+    }
     fun top(view: View) {
         lifecycleScope.launch(Dispatchers.IO){
             val user = UserDataBaseHelper.getDb(application).userDao().top()
