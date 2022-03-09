@@ -32,6 +32,11 @@ interface UserDao {
      */
     @Query("select * from user")
     fun queryAll():List<User>
+    /**
+     * 查询最顶上的对象
+     */
+    @Query("select * from user  ORDER BY autoId DESC LIMIT 1")
+    fun top():User
 
     /**
      * paging需要用到这种模式

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.room.sample.dao.UserDataBaseHelper
 import com.room.sample.databinding.ActivityRoomBaseBinding
@@ -39,9 +40,21 @@ class RoomBaseActivity : AppCompatActivity() {
             }
         }
     }
+    fun top(view: View) {
+        lifecycleScope.launch(Dispatchers.IO){
+            val user = UserDataBaseHelper.getDb(application).userDao().top()
+            Log.d("log_debug","RoomBaseActivity top --- ${Thread.currentThread().name}")
 
+            withContext(Dispatchers.Main){
+                val str = Gson().toJson(user)
+                Log.d("log_debug", "RoomBaseActivity top --- ${Thread.currentThread().name}")
+
+                binding.tvDisplay.append("${Gson().toJson(user)} \n")
+            }
+        }
+    }
     fun clear(view: View) {
-        binding.tvDisplay.text = "RoomBaseActivity"
+        binding.tvDisplay.text = "RoomBaseActivity\n"
     }
 
     fun insert(view: View) {
@@ -87,6 +100,8 @@ class RoomBaseActivity : AppCompatActivity() {
         user.nickName = "abc${Random().nextInt(100)}"
         return user;
     }
+
+
 
 
 }
