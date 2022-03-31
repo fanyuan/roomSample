@@ -7,7 +7,7 @@ import androidx.room.*
  *  indices = [Index(value = ["name"], unique = true)]  = name 唯一约束
  */
 @Entity(indices = [Index(value = ["name"],unique = true)])
-@TypeConverters(InkListConvert::class,BookListConvert::class)
+@TypeConverters(InkListConvert::class,BookListConvert2::class)//BookListConvert::class
 class ComplexUser {
     constructor(){}
     @PrimaryKey(autoGenerate = true)
