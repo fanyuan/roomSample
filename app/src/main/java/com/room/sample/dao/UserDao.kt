@@ -20,7 +20,11 @@ interface UserDao {
      */
     @Delete
     fun delete(vararg user: User)
-
+    /**
+     * 删除所有指定index前的user对象
+     */
+    @Query("delete from User where autoId < :baseId")
+    fun deleteBeforeId(baseId:Int)
     /**
      * 更新user对象
      */
@@ -32,6 +36,12 @@ interface UserDao {
      */
     @Query("select * from user")
     fun queryAll():List<User>
+
+    /**
+     * 查询所有user对象,按降序排列
+     */
+    @Query("select * from user  ORDER BY autoId DESC")
+    fun queryAllDesc():List<User>
     /**
      * 查询所有user对象
      */
@@ -42,7 +52,21 @@ interface UserDao {
      */
     @Query("select * from user  ORDER BY autoId DESC LIMIT 1")
     fun top():User
-
+    /**
+     * 查询最顶上的对象的id
+     */
+    @Query("select autoId from user  ORDER BY autoId DESC LIMIT 1")
+    fun topId():Int
+    /**
+     * 查询从上到下数第指定序号对象的id
+     */
+    @Query("select autoId from (select autoId from user  ORDER BY autoId DESC LIMIT :size) ORDER BY autoId ASC LIMIT 1")
+    fun topIdBySize(size: Int):Int
+    /**
+     * 查询数据库条目数量
+     */
+    @Query("select count(*) from user")
+    fun size():Int
     /**
      * paging需要用到这种模式
      */

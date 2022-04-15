@@ -28,7 +28,7 @@ object ComplexUserDataBaseHelper {
         if(dataBase != null){
             return
         }
-        dataBase = Room.databaseBuilder(app,ComplexUserDataBase::class.java, databseName)
+        dataBase = Room.databaseBuilder(app,ComplexUserDataBase::class.java, UserDataBase.DATABSE_NAME)//databseName
             //.addMigrations(MIGRATION_1_2) //添加升级规则
             .allowMainThreadQueries()
             .build();
