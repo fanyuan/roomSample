@@ -32,4 +32,8 @@ class MainActivity : AppCompatActivity() {
     fun complex(view: View) {
         startActivity(Intent(this,RoomComplexActivity::class.java))
     }
+
+    fun removeOldData(view: View) {
+        startActivity(Intent(this,RemoveOldItemActivity::class.java))
+    }
 }
