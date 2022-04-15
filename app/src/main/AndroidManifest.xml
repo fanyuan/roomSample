@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoomSample">
         <activity
+            android:name=".RemoveOldItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".RoomComplexActivity"
             android:exported="false" />
         <activity

@@ -35,4 +35,10 @@
         android:textAllCaps="false"
         android:text="复杂对象存取"
         android:onClick="complex"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="清除旧数据"
+        android:onClick="removeOldData"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
